@@ -1,0 +1,37 @@
+CREATE TABLE Produtos(
+  id_produto integer PRIMARY KEY AUTOINCREMENT,
+  Nome VARCHAR(100),
+  Preço decimal (10,2),
+  Estoque decimal(10),
+  Perecivel VARCHAR(3),
+  Marca VARCHAR (50),
+  Nacionalidade VARCHAR(50)
+  );
+  
+  
+  INSERT INTO Produtos VALUES (NULL, 'Maçã', 2.50, 100, 'sim', 'Mônica', 'Brasil'),
+    (NULL, 'Arroz', 10.99, 50, 'não', 'Arroz Ltda.', 'Brasil'),
+    (NULL, 'Leite', 3.75, 75, 'sim', 'Piracanjuba', 'Brasil'),
+    (NULL, 'Sabão em pó', 8.25, 30, 'não', 'OMO', 'Brasil'),
+    (NULL, 'Iogurte', 2.25, 60, 'sim', 'Vigor', 'Brasil');
+    
+    
+    SELECT*from Produtos
+    
+    SELECT COUNT(id_produto) AS quantidade_Produtos FROM Produtos;
+    
+    SELECT AVG(preço) AS Preço_medio FROM Produtos;
+    
+    SELECT perecivel, AVG(preço) AS Preço_médio_perecivel FROM Produtos GROUP by perecivel;
+    
+    SELECT nome, AVG(preço) AS Nomes_preço_medio from Produtos group by nome;
+    
+    SELECT AVG(preço) AS Media_preço, SUM(estoque) as Total_Estoque FROM Produtos;
+    
+    SELECT nome, marca, estoque FROM Produtos ORDER BY preço DESC LIMIT 1;
+    
+    SELECT *FROM Produtos WHERE Preço > (SELECT AVG(Preço) FROM Produtos);
+    
+    SELECT nacionalidade, COUNT(*) as estoque FROM Produtos GROUP BY nacionalidade;
+
+  
